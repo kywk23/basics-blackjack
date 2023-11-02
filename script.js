@@ -120,7 +120,7 @@ var aceConditions = function (hand, input) {
     if (hand[i].value === 1) {
       if (hand.length == 2) {
         hand[i].value = 11;
-      } else if (hand.length == 3 && input == "10") {
+      } else if (hand.length == 3) {
         hand[i].value = 10;
       } else if (hand.length == 3 && input == "1") {
         hand[i].value = 1;
@@ -163,7 +163,11 @@ var superNatural = function (hand) {
 //Check for natural-normal
 var natural = function (hand) {
   for (var i = 0; i < hand.length; i++) {
-    if (hand[i].name === "Ace" && hand.length == 2) {
+    if (
+      hand[i].name === "Ace" &&
+      hand.length == 2 &&
+      (playerTotalPoints || computerTotalPoints >= 21)
+    ) {
       return true;
     }
   }
