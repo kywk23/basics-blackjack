@@ -115,7 +115,7 @@ var hitPlayer = function () {
   return myOutputValue;
 };
 
-var aceConditions = function (hand) {
+var aceConditions = function (hand, input) {
   for (var i = 0; i < hand.length; i++) {
     if (hand[i].value === 1) {
       if (hand.length == 2) {
@@ -256,9 +256,12 @@ var resetGame = function () {
 };
 
 var main = function (input) {
-  if (cardCounter === 0) {
+  if (cardCounter == 0) {
     dealCards();
-    if (checkHandHasNatural()) resetGame();
+    if (checkHandHasNatural()) {
+      resetGame();
+      return myOutputValue;
+    }
     console.log(`computers cards are`, computerHand);
     console.log(`players cards are,`, playerHand);
     cardCounter = 2;
